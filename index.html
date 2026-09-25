@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteca Livre</title>
+  </head>
+  <body>
+    <main class="estrutura-app">
+      <nav class="barra-superior">
+        <a class="marca" href="/">
+          <span class="icone-marca">📚</span>
+          <span>Biblioteca Livre</span>
+        </a>
+        <div class="links-navegacao">
+          <a href="/">Início</a>
+          <a href="/#materiais">Materiais</a>
+        </div>
+      </nav>
+
+      <div id="conteudo"></div>
+    </main>
+
+    <template id="tpl-inicio">
+      <section class="secao-destaque">
+        <div class="texto-destaque">
+          <span class="etiqueta">Conhecimento aberto</span>
+          <h1>Uma biblioteca online simples, bonita e acessível.</h1>
+          <p>Encontre materiais por título, autor ou categoria em uma interface limpa, calma e fácil de usar.</p>
+        </div>
+        <aside class="card-destaque">
+          <span class="numero-destaque" data-field="total">0</span>
+          <p>materiais disponíveis para consulta</p>
+        </aside>
+      </section>
+
+      <section class="card-conteudo painel-busca" id="materiais">
+        <div>
+          <span class="etiqueta">Pesquisa</span>
+          <h2>Localizar material</h2>
+        </div>
+        <form class="linha-busca" id="formBusca">
+          <input type="text" id="campoBusca" placeholder="Pesquisar por título, autor ou categoria..." />
+        </form>
+      </section>
+
+      <div id="listaMateriais"></div>
+    </template>
+
+    <template id="tpl-card-material">
+      <article class="card-material">
+        <div class="moldura-capa">
+          <img class="capa-material" data-field="imagem" loading="lazy" hidden />
+          <div class="capa-indisponivel" data-field="placeholder">📘</div>
+        </div>
+        <div class="corpo-card">
+          <span class="tipo-material" data-field="tipo">Material</span>
+          <h3 data-field="titulo">Sem título</h3>
+          <p class="dado-material"><strong>Autor:</strong> <span data-field="autor">Desconhecido</span></p>
+          <p class="dado-material"><strong>Categoria:</strong> <span data-field="categoria">Sem categoria</span></p>
+          <p class="descricao-material" data-field="descricao">Sem descrição cadastrada.</p>
+          <div class="acoes-card">
+            <a class="botao-primario" data-field="link">Ver detalhes</a>
+          </div>
+        </div>
+      </article>
+    </template>
+
+    <template id="tpl-sem-resultados">
+      <div class="card-conteudo sem-resultados">Nenhum material encontrado.</div>
+    </template>
+
+    <template id="tpl-detalhes">
+      <section class="card-conteudo layout-detalhes">
+        <div class="caixa-capa-detalhe">
+          <img data-field="imagem" hidden />
+          <div class="capa-indisponivel capa-indisponivel-detalhe" data-field="placeholder">📘</div>
+        </div>
+        <div class="painel-detalhes">
+          <span class="tipo-material" data-field="tipo">Material</span>
+          <h1 data-field="titulo">Sem título</h1>
+          <div class="info-detalhe">
+            <p><strong>Autor:</strong> <span data-field="autor">Desconhecido</span></p>
+            <p><strong>Categoria:</strong> <span data-field="categoria">Sem categoria</span></p>
+          </div>
+          <div class="descricao-detalhe">
+            <p data-field="descricao">Sem descrição cadastrada.</p>
+          </div>
+          <div class="acoes-detalhe">
+            <a class="botao-primario" target="_blank" rel="noreferrer" data-field="link">Acessar conteúdo</a>
+            <a class="botao-secundario" href="/">Voltar</a>
+          </div>
+        </div>
+      </section>
+    </template>
+
+    <template id="tpl-erro">
+      <section class="card-conteudo janela-central janela-erro">
+        <span class="etiqueta">Ops</span>
+        <h1>Algo deu errado</h1>
+        <p data-field="mensagem"></p>
+        <a class="botao-primario" href="/">Voltar para o início</a>
+      </section>
+    </template>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
